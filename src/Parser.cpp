@@ -2,31 +2,31 @@
 
 unordered_map<string, addressing_data> Parser::addressing_types_jmp_symbol =
 {
-	{ "IMMEDIATE",        { regex("[_a-zA-Z]\\w*"),						          0x0, true  } },
-	{ "REG_DIR",          { regex("\\*%(r[0-7]|pc|sp|psw)[hl]?"),		          0x1, false } },
-	{ "REG_IND",          { regex("\\(%r([0-7]|pc|sp|psw)[hl]?\\)"),		      0x2, false } },
+	{ "IMMEDIATE",        { regex("[_a-zA-Z]\\w*"),				      0x0, true  } },
+	{ "REG_DIR",          { regex("\\*%(r[0-7]|pc|sp|psw)[hl]?"),		      0x1, false } },
+	{ "REG_IND",          { regex("\\(%r([0-7]|pc|sp|psw)[hl]?\\)"),	      0x2, false } },
 	{ "REG_IND_DISPL",    { regex("\\*[_a-zA-Z]\\w*\\(%(r[0-6]|sp|psw)[hl]?\\)"), 0x3, true  } },
 	{ "REG_IND_DISPL_PC", { regex("\\*[_a-zA-Z]\\w*\\(%(r7|pc)[hl]?\\)"),         0x3, true  } },
-	{ "MEMORY",           { regex("\\*[_a-zA-Z]\\w*"),					          0x4, true  } }
+	{ "MEMORY",           { regex("\\*[_a-zA-Z]\\w*"),			      0x4, true  } }
 };
 
 unordered_map<string, addressing_data> Parser::addressing_types_jmp_literal =
 {
-	{ "IMMEDIATE",     { regex("-?((0x[a-f0-9]+)?|\\d+)"),					            0x0, true  } },
-	{ "REG_DIR",       { regex("\\*%(r[0-7]|pc|sp|psw)[hl]?"),	                        0x1, false } },
+	{ "IMMEDIATE",     { regex("-?((0x[a-f0-9]+)?|\\d+)"),			            0x0, true  } },
+	{ "REG_DIR",       { regex("\\*%(r[0-7]|pc|sp|psw)[hl]?"),	                    0x1, false } },
 	{ "REG_IND",       { regex("\\*\\(%(r[0-7]|pc|sp|psw)[hl]?\\)"),                    0x2, false } },
 	{ "REG_IND_DISPL", { regex("\\*(0x)?([0-9]|[a-f])+\\(%(r[0-7]|pc|sp|psw)[hl]?\\)"), 0x3, true  } },
-	{ "MEMORY",        { regex("\\*((0x[a-f0-9]+)?|\\d+)"),							    0x4, true  } }
+	{ "MEMORY",        { regex("\\*((0x[a-f0-9]+)?|\\d+)"),				    0x4, true  } }
 };
 
 unordered_map<string, addressing_data> Parser::addressing_types_not_jmp_symbol =
 {
-	{ "IMMEDIATE",        { regex("\\$[_a-zA-Z]\\w*"),				           0x0, true  } },
-	{ "REG_DIR",          { regex("%(r[0-7]|pc|sp|psw)[hl]?"),				   0x1, false } },
-	{ "REG_IND",          { regex("\\(%(r[0-7]|pc|sp|psw)[hl]?\\)"),	       0x2, false } },
+	{ "IMMEDIATE",        { regex("\\$[_a-zA-Z]\\w*"),			   0x0, true  } },
+	{ "REG_DIR",          { regex("%(r[0-7]|pc|sp|psw)[hl]?"),		   0x1, false } },
+	{ "REG_IND",          { regex("\\(%(r[0-7]|pc|sp|psw)[hl]?\\)"),	   0x2, false } },
 	{ "REG_IND_DISPL",    { regex("[_a-zA-Z]\\w*\\(%(r[0-6]|sp|psw)[hl]?\\)"), 0x3, true  } },
 	{ "REG_IND_DISPL_PC", { regex("[_a-zA-Z]\\w*\\(%(r7|pc)[hl]?\\)"),         0x3, true  } },
-	{ "MEMORY",           { regex("[_a-zA-Z]\\w*"),					           0x4, true  } }
+	{ "MEMORY",           { regex("[_a-zA-Z]\\w*"),				   0x4, true  } }
 };
 
 unordered_map<string, addressing_data> Parser::addressing_types_not_jmp_literal =
@@ -86,9 +86,9 @@ unordered_map<string, regex> Parser::patching =
 
 unordered_map<string, instruction_data> Parser::instructions =
 {
-	{ "HALT", { regex("halt"),		0x00, 0 } },
-	{ "IRET", { regex("iret"),		0x01, 0 } },
-	{ "RET",  { regex("ret"),		0x02, 0 } },
+	{ "HALT", { regex("halt"),	0x00, 0 } },
+	{ "IRET", { regex("iret"),	0x01, 0 } },
+	{ "RET",  { regex("ret"),	0x02, 0 } },
 	{ "INT",  { regex("int[bw]?"),	0x03, 1 } },
 	{ "CALL", { regex("call[bw]?"),	0x04, 1 } },
 	{ "JMP",  { regex("jmp[bw]?"),	0x05, 1 } },
@@ -120,7 +120,7 @@ unordered_map<string, regex> Parser::directives =
 	{ ".EXTERN",  regex("\\.extern")  },
 	{ ".SECTION", regex("\\.section") },
 	{ ".END",     regex("\\.end")     },
-	{ ".BYTE",	  regex("\\.byte")    },
+	{ ".BYTE",    regex("\\.byte")    },
 	{ ".WORD",    regex("\\.word")    },
 	{ ".SKIP",    regex("\\.skip")    },
 	{ ".EQU",     regex("\\.equ")     }
